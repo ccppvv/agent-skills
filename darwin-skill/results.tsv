@@ -1,0 +1,13 @@
+timestamp	commit	skill	old_score	new_score	status	dimension	note	eval_mode
+2026-06-10T12:15	baseline	mike	-	71.9	baseline	-	初始评估：9维评分，资源充足但缺intent routing层	dry_run
+2026-06-10T12:30	round1	mike	71.9	83.4	keep	dim2	新增意图识别+动态路由+交互确认层，带动dim3/dim4/dim5同步提升	dry_run
+2026-06-10T12:45	round2	mike	83.4	86.3	keep	dim7	修复步骤顺序逻辑：特有模型检查移至文件加载前	dry_run
+2026-06-10T13:00	round3	mike	86.3	87.7	keep	dim1	更新frontmatter：新增intent-first定位、触发词、别名触发方式	dry_run
+2026-06-10T13:15	round4	mike	87.7	88.3	keep	dim4	新增2个🔴检查点：文件加载后确认、模式选择后确认	dry_run
+2026-06-10T13:30	baseline	agent-flow-devkit	-	51.5	baseline	-	初始评估：代码示例充分，但缺失败处理/检查点/反例	dry_run
+2026-06-10T13:35	round1	agent-flow-devkit	51.5	58.7	keep	dim3	新增10条三段式fallback表+精简Debugging	dry_run
+2026-06-10T13:50	round2	agent-flow-devkit	58.7	63.5	keep	dim9	新增10条反模式表（后果+正确做法）	dry_run
+2026-06-10T14:00	round3	agent-flow-devkit	63.5	67.1	keep	dim4	新增4个🔴检查点+Quality Gate自检表	dry_run
+2026-06-10T14:10	round4	agent-flow-devkit	67.1	70.7	keep	dim2	Workflow扩展到5步，Common Tasks内联到步骤中消除冗余	dry_run
+2026-06-10T14:20	round5	agent-flow-devkit	70.7	72.1	keep	dim1	双语Frontmatter+中文触发词	dry_run
+2026-06-10T14:35	round6	agent-flow-devkit	72.1	75.5	keep	dim5	合并node-create-dev核心内容：新节点创建流程+VOICE_TASK_TYPES调试	dry_run

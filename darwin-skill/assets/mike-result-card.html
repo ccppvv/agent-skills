@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Darwin Skill — Mike 进化报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans SC', 'Inter', sans-serif;
+  display: flex; justify-content: center; padding: 40px;
+  background: #F5F0E8;
+}
+.card {
+  width: 900px; background: #FAFAF5; border-radius: 16px;
+  overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+}
+.brand-bar {
+  background: #1A1A1A; padding: 20px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.brand-name { font-size: 20px; font-weight: 800; color: #fff; }
+.brand-name .dot { color: #E8590C; }
+.brand-date { font-size: 14px; color: #888; }
+
+.hero {
+  padding: 40px; display: flex; gap: 40px; align-items: center;
+  background: linear-gradient(180deg, #FAFAF5, #F5F0E8);
+}
+.score-ring { position: relative; width: 200px; height: 200px; flex-shrink: 0; }
+.score-ring svg { transform: rotate(-90deg); }
+.score-ring .center {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); text-align: center;
+}
+.score-ring .num { font-size: 72px; font-weight: 900; color: #1A1A1A; line-height: 1; }
+.score-ring .max { font-size: 20px; color: #B0A898; }
+.score-ring .label { font-size: 13px; color: #999; margin-top: 4px; }
+.hero-text h1 { font-size: 28px; font-weight: 900; }
+.hero-text h1 span { color: #E8590C; }
+.hero-text .journey { font-size: 16px; color: #666; margin-top: 8px; line-height: 1.6; }
+
+.dim-table { padding: 32px 40px; }
+.dim-table h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: #1A1A1A; }
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; padding: 10px 12px; font-size: 13px; font-weight: 600; color: #888; border-bottom: 1px solid #E8E0D4; }
+td { padding: 10px 12px; font-size: 14px; border-bottom: 1px solid #F0EBE0; }
+.dim-name { font-weight: 600; color: #1A1A1A; }
+.bar-cell { width: 180px; }
+.bar-track { height: 8px; background: #E8E0D4; border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #E8590C, #F08C3E); border-radius: 4px; transition: width 0.5s; }
+.bar-fill.before { background: #D0C8B8; }
+.delta { font-weight: 700; }
+.delta.pos { color: #2B8A3E; }
+.delta.zero { color: #999; }
+
+.rounds { padding: 0 40px 32px; }
+.rounds h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: #1A1A1A; }
+.round-item { padding: 14px 16px; background: #F8F4EE; border-radius: 8px; margin-bottom: 8px; }
+.round-item .header { display: flex; justify-content: space-between; font-weight: 600; }
+.round-item .dim { color: #E8590C; }
+.round-item .delta-val { color: #2B8A3E; }
+.round-item .desc { font-size: 13px; color: #666; margin-top: 4px; }
+
+.footer {
+  padding: 20px 40px; text-align: center; font-size: 12px; color: #B0A898;
+  border-top: 1px solid #E8E0D4;
+}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <div class="brand-bar">
+    <div class="brand-name">Darwin<span class="dot">.</span>skill</div>
+    <div class="brand-date">2026-06-10 · 4 rounds</div>
+  </div>
+
+  <div class="hero">
+    <div class="score-ring">
+      <svg width="200" height="200" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="85" fill="none" stroke="#E8E0D4" stroke-width="14" stroke-dasharray="6 6"/>
+        <circle cx="100" cy="100" r="85" fill="none" stroke="url(#g)" stroke-width="16" stroke-linecap="round"
+          stroke-dasharray="534" stroke-dashoffset="62" filter="url(#shadow)"/>
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E8590C"/><stop offset="1" stop-color="#F08C3E"/></linearGradient>
+          <filter id="shadow"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#E8590C" flood-opacity="0.3"/></filter>
+        </defs>
+      </svg>
+      <div class="center">
+        <div class="num">88.3</div>
+        <div class="max">/100</div>
+        <div class="label">最终评分</div>
+      </div>
+    </div>
+    <div class="hero-text">
+      <h1>Mike <span>思维模型路由引擎</span></h1>
+      <div class="journey">
+        <strong>71.9</strong> → <strong>88.3</strong>  <span style="color:#2B8A3E;font-weight:700;">+16.4</span><br>
+        4 轮优化 · 0 次回滚 · 新增意图识别+动态路由核心机制
+      </div>
+    </div>
+  </div>
+
+  <div class="dim-table">
+    <h2>9 维度评分变化</h2>
+    <table>
+      <tr><th>维度</th><th>改前</th><th></th><th>改后</th><th>Δ</th></tr>
+      <tr><td class="dim-name">① Frontmatter 质量</td><td>7</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:70%"></div></div></td><td>9</td><td class="delta pos">+2</td></tr>
+      <tr><td class="dim-name">② 工作流清晰度</td><td>7</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:70%"></div></div></td><td>9</td><td class="delta pos">+2</td></tr>
+      <tr><td class="dim-name">③ 失败模式编码</td><td>8</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:80%"></div></div></td><td>9</td><td class="delta pos">+1</td></tr>
+      <tr><td class="dim-name">④ 检查点设计</td><td>6</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:60%"></div></div></td><td>9</td><td class="delta pos">+3</td></tr>
+      <tr><td class="dim-name">⑤ 可执行具体性</td><td>7</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:70%"></div></div></td><td>10</td><td class="delta pos">+3</td></tr>
+      <tr><td class="dim-name">⑥ 资源整合度</td><td>9</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:90%"></div></div></td><td>10</td><td class="delta pos">+1</td></tr>
+      <tr><td class="dim-name">⑦ 整体架构</td><td>8</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:80%"></div></div></td><td>9</td><td class="delta pos">+1</td></tr>
+      <tr><td class="dim-name">⑧ 实测表现</td><td>7</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:70%"></div></div></td><td>8</td><td class="delta pos">+1</td></tr>
+      <tr><td class="dim-name">⑨ 反例与黑名单</td><td>7</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:70%"></div></div></td><td>8</td><td class="delta pos">+1</td></tr>
+    </table>
+  </div>
+
+  <div class="rounds">
+    <h2>4 轮优化记录</h2>
+    <div class="round-item">
+      <div class="header">
+        <span>Round 1 · <span class="dim">dim2 工作流清晰度</span></span>
+        <span class="delta-val">+11.5</span>
+      </div>
+      <div class="desc">新增意图识别+动态路由+交互确认层。12 类意图分类表、交互协议、路由规则。核心机制从"硬扫 37 类"改为"先交互→再路由→再分析"。</div>
+    </div>
+    <div class="round-item">
+      <div class="header">
+        <span>Round 2 · <span class="dim">dim7 整体架构</span></span>
+        <span class="delta-val">+2.9</span>
+      </div>
+      <div class="desc">修复步骤顺序：特有模型检查移至文件加载前，消除 forward-reference。新增 37 类别→文件路径对照表。</div>
+    </div>
+    <div class="round-item">
+      <div class="header">
+        <span>Round 3 · <span class="dim">dim1 Frontmatter 质量</span></span>
+        <span class="delta-val">+1.4</span>
+      </div>
+      <div class="desc">更新 description：Intent-first 定位 + 新增触发词（分析一下/帮我分析/帮我决策/权衡/评估风险等）+ 别名触发方式。</div>
+    </div>
+    <div class="round-item">
+      <div class="header">
+        <span>Round 4 · <span class="dim">dim4 检查点设计</span></span>
+        <span class="delta-val">+0.6</span>
+      </div>
+      <div class="desc">新增 2 个 🔴 检查点：文件加载后确认、模式选择后确认。全部检查点统一 🔴 显性标记。</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Darwin.skill 2.0 · Train your Skills like you train your models<br>
+    评估模式: dry_run（结构评分推演） · 评分依据: SkillLens 9维 Rubric (arXiv:2605.23899)
+  </div>
+
+</div>
+</body>
+</html>

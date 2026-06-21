@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Darwin Skill — agent-flow-devkit 进化报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans SC', 'Inter', sans-serif;
+  display: flex; justify-content: center; padding: 40px;
+  background: #F5F0E8;
+}
+.card {
+  width: 900px; background: #FAFAF5; border-radius: 16px;
+  overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+}
+.brand-bar {
+  background: #1A1A1A; padding: 20px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.brand-name { font-size: 20px; font-weight: 800; color: #fff; }
+.brand-name .dot { color: #E8590C; }
+.brand-date { font-size: 14px; color: #888; }
+
+.hero {
+  padding: 40px; display: flex; gap: 40px; align-items: center;
+  background: linear-gradient(180deg, #FAFAF5, #F5F0E8);
+}
+.score-ring { position: relative; width: 200px; height: 200px; flex-shrink: 0; }
+.score-ring svg { transform: rotate(-90deg); }
+.score-ring .center {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); text-align: center;
+}
+.score-ring .num { font-size: 72px; font-weight: 900; color: #1A1A1A; line-height: 1; }
+.score-ring .max { font-size: 20px; color: #B0A898; }
+.score-ring .label { font-size: 13px; color: #999; margin-top: 4px; }
+.hero-text h1 { font-size: 28px; font-weight: 900; }
+.hero-text h1 span { color: #E8590C; }
+.hero-text .journey { font-size: 16px; color: #666; margin-top: 8px; line-height: 1.6; }
+.hero-text .tag { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-top: 12px; }
+.tag-r1 { background: #FEF3E2; color: #C76A0D; }
+.tag-r2 { background: #E8F5E9; color: #2B8A3E; }
+
+.dim-table { padding: 32px 40px; }
+.dim-table h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: #1A1A1A; }
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; padding: 10px 12px; font-size: 13px; font-weight: 600; color: #888; border-bottom: 1px solid #E8E0D4; }
+td { padding: 10px 12px; font-size: 14px; border-bottom: 1px solid #F0EBE0; }
+.dim-name { font-weight: 600; color: #1A1A1A; }
+.bar-cell { width: 180px; }
+.bar-track { height: 8px; background: #E8E0D4; border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #E8590C, #F08C3E); border-radius: 4px; }
+.bar-fill.before { background: #D0C8B8; }
+.delta { font-weight: 700; }
+.delta.pos { color: #2B8A3E; }
+.delta.big { color: #D4380D; }
+
+.rounds { padding: 0 40px 32px; }
+.rounds h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: #1A1A1A; }
+.round-item { padding: 14px 16px; background: #F8F4EE; border-radius: 8px; margin-bottom: 8px; }
+.round-item .header { display: flex; justify-content: space-between; font-weight: 600; }
+.round-item .dim { color: #E8590C; }
+.round-item .delta-val.pos { color: #2B8A3E; }
+.round-item .delta-val.big { color: #D4380D; }
+.round-item .desc { font-size: 13px; color: #666; margin-top: 4px; }
+.summary-box { padding: 0 40px 32px; display: flex; gap: 16px; }
+.stat { flex: 1; background: #F8F4EE; border-radius: 8px; padding: 16px; text-align: center; }
+.stat .num { font-size: 28px; font-weight: 800; color: #1A1A1A; }
+.stat .lbl { font-size: 12px; color: #888; margin-top: 4px; }
+
+.footer {
+  padding: 20px 40px; text-align: center; font-size: 12px; color: #B0A898;
+  border-top: 1px solid #E8E0D4;
+}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <div class="brand-bar">
+    <div class="brand-name">Darwin<span class="dot">.</span>skill</div>
+    <div class="brand-date">2026-06-10 · 6 rounds</div>
+  </div>
+
+  <div class="hero">
+    <div class="score-ring">
+      <svg width="200" height="200" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="85" fill="none" stroke="#E8E0D4" stroke-width="14" stroke-dasharray="6 6"/>
+        <circle cx="100" cy="100" r="85" fill="none" stroke="url(#g)" stroke-width="16" stroke-linecap="round"
+          stroke-dasharray="534" stroke-dashoffset="131" filter="url(#shadow)"/>
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E8590C"/><stop offset="1" stop-color="#F08C3E"/></linearGradient>
+          <filter id="shadow"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#E8590C" flood-opacity="0.3"/></filter>
+        </defs>
+      </svg>
+      <div class="center">
+        <div class="num">75.5</div>
+        <div class="max">/100</div>
+        <div class="label">最终评分</div>
+      </div>
+    </div>
+    <div class="hero-text">
+      <h1>agent-flow-devkit <span>@tencent/agent-flow 开发工具包</span></h1>
+      <div class="journey">
+        <strong>51.5</strong> → <strong>75.5</strong>  <span style="color:#2B8A3E;font-weight:700;">+24.0</span><br>
+        6 轮优化 · 0 次回滚 · 从纯英文维护指南升级为完整生命周期开发工具包
+      </div>
+      <div>
+        <span class="tag tag-r1">新增 节点创建流程</span>
+        <span class="tag tag-r2" style="margin-left:8px;">合并 node-create-dev</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dim-table">
+    <h2>9 维度评分变化</h2>
+    <table>
+      <tr><th>维度</th><th>改前</th><th></th><th>改后</th><th>Δ</th></tr>
+      <tr><td class="dim-name">① Frontmatter 质量</td><td>7</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:70%"></div></div></td><td>9</td><td class="delta pos">+2</td></tr>
+      <tr><td class="dim-name">② 工作流清晰度</td><td>5</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:50%"></div></div></td><td>8</td><td class="delta pos">+3</td></tr>
+      <tr><td class="dim-name">③ 失败模式编码</td><td>3</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:30%"></div></div></td><td>9</td><td class="delta big">+6</td></tr>
+      <tr><td class="dim-name">④ 检查点设计</td><td>2</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:20%"></div></div></td><td>8</td><td class="delta big">+6</td></tr>
+      <tr><td class="dim-name">⑤ 可执行具体性</td><td>6</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:60%"></div></div></td><td>8</td><td class="delta pos">+2</td></tr>
+      <tr><td class="dim-name">⑥ 资源整合度</td><td>7</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:70%"></div></div></td><td>7</td><td class="delta zero">—</td></tr>
+      <tr><td class="dim-name">⑦ 整体架构</td><td>7</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:70%"></div></div></td><td>8</td><td class="delta pos">+1</td></tr>
+      <tr><td class="dim-name">⑧ 实测表现</td><td>6</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:60%"></div></div></td><td>6</td><td class="delta zero">—</td></tr>
+      <tr><td class="dim-name">⑨ 反例与黑名单</td><td>1</td><td class="bar-cell"><div class="bar-track"><div class="bar-fill before" style="width:10%"></div></div></td><td>9</td><td class="delta big">+8</td></tr>
+    </table>
+  </div>
+
+  <div class="rounds">
+    <h2>6 轮优化记录</h2>
+    <div class="round-item">
+      <div class="header">
+        <span>Round 1 · <span class="dim">dim③ 失败模式编码</span></span>
+        <span class="delta-val big">+7.2</span>
+      </div>
+      <div class="desc">新增 10 条三段式 fallback 表（inject→getNodes→updateItem→级联→emit→枚举等），从零覆盖到全场景。</div>
+    </div>
+    <div class="round-item">
+      <div class="header">
+        <span>Round 2 · <span class="dim">dim⑨ 反例黑名单</span></span>
+        <span class="delta-val big">+4.8</span>
+      </div>
+      <div class="desc">新增 9 条反模式表（手写枚举/不 clone/级联不检查/不调 validateXGraph 等），条条有后果+正确做法。</div>
+    </div>
+    <div class="round-item">
+      <div class="header">
+        <span>Round 3 · <span class="dim">dim④ 检查点设计</span></span>
+        <span class="delta-val big">+3.6</span>
+      </div>
+      <div class="desc">新增 4 个 🔴 检查点（修改前/类型定义后/级联后/emit前）+ 5 项 Quality Gate 自检表。</div>
+    </div>
+    <div class="round-item">
+      <div class="header">
+        <span>Round 4 · <span class="dim">dim② 工作流清晰度</span></span>
+        <span class="delta-val pos">+3.6</span>
+      </div>
+      <div class="desc">Workflow 扩展到 5 步，代码示例内联到步骤中，消除 Common Tasks 与 Workflow 的冗余。</div>
+    </div>
+    <div class="round-item">
+      <div class="header">
+        <span>Round 5 · <span class="dim">dim① Frontmatter 质量</span></span>
+        <span class="delta-val pos">+1.4</span>
+      </div>
+      <div class="desc">双语 description + 中文触发词（agent-flow 节点/级联/disableLLM/AI模式切换等）。</div>
+    </div>
+    <div class="round-item">
+      <div class="header">
+        <span>Round 6 · <span class="dim">dim⑤ 可执行具体性</span></span>
+        <span class="delta-val pos">+3.4</span>
+      </div>
+      <div class="desc">合并 node-create-dev 核心内容：新节点创建全流程（需求收集→4 处注册→Props 嵌套→校验→i18n）+ VOICE_TASK_TYPES 调试流程。</div>
+    </div>
+  </div>
+
+  <div class="summary-box">
+    <div class="stat">
+      <div class="num">+24.0</div>
+      <div class="lbl">总分提升</div>
+    </div>
+    <div class="stat">
+      <div class="num">6</div>
+      <div class="lbl">优化轮数</div>
+    </div>
+    <div class="stat">
+      <div class="num">0</div>
+      <div class="lbl">回滚次数</div>
+    </div>
+    <div class="stat">
+      <div class="num">144%</div>
+      <div class="lbl">体积变化</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Darwin.skill 2.0 · Train your Skills like you train your models<br>
+    评估模式: dry_run · 评分依据: SkillLens 9维 Rubric (arXiv:2605.23899)
+  </div>
+
+</div>
+</body>
+</html>

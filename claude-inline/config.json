@@ -1,0 +1,5 @@
+{
+  "baseurl": "https://openrouter.ai/api/v1",
+  "apikey": "sk-PLACEHOLDER_REPLACE_ME",
+  "model": "anthropic/claude-3-5-sonnet-20241022"
+}

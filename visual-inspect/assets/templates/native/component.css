@@ -1,0 +1,33 @@
+:root {
+  --color-primary: #0066CC;
+  --color-text: #1A1A1A;
+  --color-surface: #FFFFFF;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --font-heading: 600 20px/1.4 system-ui;
+  --font-body: 400 16px/1.6 system-ui;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  background: var(--color-surface);
+}
+
+.title {
+  font: var(--font-heading);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: var(--spacing-sm);
+  }
+}

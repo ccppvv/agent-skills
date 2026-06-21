@@ -1,0 +1,1 @@
+For each microservice, execute the full CI/CD pipeline: build, test, and deploy

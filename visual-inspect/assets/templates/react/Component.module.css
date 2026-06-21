@@ -1,0 +1,27 @@
+.container {
+  --padding: var(--spacing-md);
+  --radius: var(--radius-md);
+  --primary: var(--color-primary);
+
+  padding: var(--padding);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.title {
+  font: var(--font-heading);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+.content {
+  font: var(--font-body);
+  color: var(--color-text-secondary);
+}
+
+/* 响应式 */
+@media (max-width: 640px) {
+  .container {
+    --padding: var(--spacing-sm);
+  }
+}

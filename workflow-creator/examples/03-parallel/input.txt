@@ -1,0 +1,1 @@
+Run frontend tests and backend tests in parallel, then aggregate the results

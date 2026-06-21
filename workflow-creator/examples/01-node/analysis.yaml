@@ -1,0 +1,31 @@
+pattern_detection:
+  detected_patterns:
+    - pattern: node
+      confidence: 0.95
+      evidence:
+        - "single action verb: 'check'"
+        - "single subject: 'configuration file'"
+        - "no iteration, parallelism, or branching keywords"
+
+complexity_analysis:
+  step_count: 1
+  dependency_type: "none"
+  complexity_score: 0.15
+  complexity_level: "simple"
+  breakdown:
+    step_count: 0.015  # (1/20 * 0.30)
+    dependency: 0.0625  # (0.25 * 0.25)
+    tool_diversity: 0.0  # (0/8 * 0.20)
+    error_handling: 0.0375  # (0.25 * 0.15)
+    state_management: 0.0  # (0/1 * 0.10)
+
+metadata_decisions:
+  category: "analysis"
+  category_confidence: 0.9
+  rationale: "validation and checking keywords"
+
+  mcp_servers: []
+  mcp_rationale: "Simple validation needs no special tools"
+
+  personas: ["general-purpose"]
+  persona_rationale: "No specialized domain knowledge required"

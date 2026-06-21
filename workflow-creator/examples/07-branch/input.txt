@@ -1,0 +1,1 @@
+Run tests, if they pass deploy to staging, else send failure notification

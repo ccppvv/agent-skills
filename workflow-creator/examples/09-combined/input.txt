@@ -1,0 +1,1 @@
+Deploy to three regions in parallel. For each region: deploy to staging, verify health, if healthy deploy to production, else rollback. Track shared deployment status across all regions. If any region fails, trigger global rollback.

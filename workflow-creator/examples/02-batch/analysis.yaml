@@ -1,0 +1,27 @@
+pattern_detection:
+  detected_patterns:
+    - pattern: batch
+      confidence: 0.92
+      evidence:
+        - "keyword: 'all Python files'"
+        - "iteration over collection (files)"
+        - "uniform operation (add type annotations)"
+
+complexity_analysis:
+  step_count: 3
+  complexity_score: 0.42
+  complexity_level: "standard"
+  breakdown:
+    step_count: 0.045  # (3/20 * 0.30)
+    dependency: 0.125  # (0.5 * 0.25) - simple dependency chain
+    tool_diversity: 0.05  # (2/8 * 0.20) - serena + native
+    error_handling: 0.1125  # (0.75 * 0.15) - validation included
+    state_management: 0.075  # (0.75 * 0.10) - persistent file changes
+
+metadata_decisions:
+  category: "maintenance"
+  mcp_servers: ["serena"]
+  mcp_rationale:
+    serena: "Code manipulation and AST operations"
+  personas: ["backend-developer"]
+  persona_rationale: "Python code modification expertise"

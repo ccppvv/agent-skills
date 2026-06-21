@@ -1,0 +1,1 @@
+Check the system configuration file for syntax errors and required fields

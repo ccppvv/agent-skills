@@ -3,19 +3,19 @@
     "created": "2026-06-21 18:22",
     "id": "756652e6-07ed-4a82-8b71-d69f52e759e9",
     "note": "throw + pick 配对 skill 的构建 session",
-    "project": "/Users/v/Apps/TypeLess",
+    "project": "path/to/project",
     "tool": "claude"
   },
   "pear-skills": {
     "created": "2026-06-21 19:48",
     "id": "efe6ea00-5855-43cf-a5f0-03eb5a4f03bc",
-    "project": "/Users/v/Minds",
+    "project": "path/to/project",
     "tool": "claude"
   },
   "skill-sync": {
     "created": "2026-06-21 20:00",
     "id": "9f6b8a36-f339-4951-9727-5592c670483d",
-    "project": "/Users/v/Work/workstation-ccc-mui",
+    "project": "path/to/project",
     "tool": "claude"
   }
 }

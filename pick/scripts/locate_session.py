@@ -565,23 +565,124 @@ def _render_handoff(h):
 
 # ---------- alias resolution ------------------------------------------------
 
-def _resolve_alias(query):
-    """If query is an alias name, return (id, tool_hint, alias_name); else None.
-    Aliases live in ~/.agents/skills/throw/aliases.json (managed by the throw skill)."""
+def _load_aliases():
+    """Load the alias map {name: entry} from the throw skill's data file, or {}."""
     if not ALIAS_FILE.exists():
-        return None
+        return {}
     try:
         with open(ALIAS_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
     except Exception:
-        return None
-    if not isinstance(data, dict) or query not in data:
-        return None
-    entry = data[query]
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def _resolve_alias(query, data=None):
+    """Exact alias match -> (id, tool_hint, name); else None.
+    Aliases live in ~/.agents/skills/throw/aliases.json (managed by the throw skill)."""
+    if data is None:
+        data = _load_aliases()
+    entry = data.get(query)
     if not isinstance(entry, dict) or not entry.get("id"):
         return None
     tool = entry.get("tool") if entry.get("tool") in ("codex", "claude") else None
     return entry["id"], tool, query
+
+
+def _levenshtein(a, b):
+    """Edit distance between two strings (typo tolerance for alias names)."""
+    if a == b:
+        return 0
+    if not a:
+        return len(b)
+    if not b:
+        return len(a)
+    prev = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        cur = [i]
+        for j, cb in enumerate(b, 1):
+            cur.append(min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (ca != cb)))
+        prev = cur
+    return prev[-1]
+
+
+def _is_subsequence(needle, haystack):
+    """True if `needle`'s chars appear in order within `haystack` (fuzzy match)."""
+    it = iter(haystack)
+    return all(c in it for c in needle)
+
+
+# Alias match tiers, best -> worst: exact > prefix > substring > fuzzy > typo.
+# Each tier gets a wide lead over the next so a prefix never loses to a fuzzy hit,
+# and within a tier a shorter name (closer to the query) ranks higher. This is the
+# autojump / Ctrl+R idea: a remembered-but-imprecise name should surface its siblings.
+def _score_alias(query, name):
+    """How well does `query` match alias `name`? Returns (score, tier) or None.
+
+    Case-insensitive. None = no usable match. Tiers:
+      exact      q == n                   (test -> test)
+      prefix     n starts with q          (test -> testb)
+      substring  q occurs inside n        (est -> test)
+      fuzzy      q is a subsequence of n  (ts -> test)
+      typo       small edit distance      (tset -> test)
+    """
+    q = query.lower()
+    n = name.lower()
+    if q == n:
+        return (1000, "exact")
+    if n.startswith(q):
+        return (900 - (len(n) - len(q)), "prefix")
+    if q in n:
+        return (700 - (len(n) - len(q)), "substring")
+    # Require >= 2 chars before accepting a subsequence match, so a single stray
+    # keystroke doesn't fuzzy-match every alias containing that letter.
+    if len(q) >= 2 and _is_subsequence(q, n):
+        return (400 - (len(n) - len(q)), "fuzzy")
+    dist = _levenshtein(q, n)
+    # Forgive typos only when lengths are close, so a 1-char query can't
+    # typo-match a long alias and flood the results.
+    if dist <= 2 and abs(len(q) - len(n)) <= 2:
+        return (200 - dist * 30, "typo")
+    return None
+
+
+def _find_alias_candidates(query, data, exclude=None, max_n=8):
+    """Alias names close to `query` (excluding exact `exclude`), best first.
+
+    Returns list of (name, entry, tier). Used two ways: when the query has an
+    exact alias hit, the strong near-misses (prefix/typo) become a hint; when
+    there's no exact hit, all tiers become a pick-list (Ctrl+R / autojump style)."""
+    scored = []
+    for name, entry in data.items():
+        if not isinstance(entry, dict) or not entry.get("id"):
+            continue
+        if name == exclude:
+            continue
+        s = _score_alias(query, name)
+        if s is None:
+            continue
+        score, tier = s
+        scored.append((score, name, entry, tier))
+    scored.sort(key=lambda x: (-x[0], x[1]))  # score desc, then name asc for stable order
+    return [(name, entry, tier) for _, name, entry, tier in scored[:max_n]]
+
+
+def _render_alias_candidates(query, candidates):
+    """Pick-list shown when a query matches no exact alias but has close ones."""
+    lines = [f'NO ALIAS "{query}" — did you mean one of these?', ""]
+    for name, entry, tier in candidates:
+        loc = f"[{entry.get('tool', '?')} in {entry.get('project', '?')}]" if entry.get("tool") else ""
+        note = f"  # {entry['note']}" if entry.get("note") else ""
+        lines.append(f"  {name} {loc}  ({tier}){note}")
+    lines += ["", "Re-run pick with the exact alias name you want."]
+    return "\n".join(lines)
+
+
+def _format_alias_hint(near):
+    """One-line, low-noise hint appended after a successful resume when other
+    aliases were a strong near-miss (e.g. typed "test" but "testb" also exists)."""
+    names = ", ".join(n for n, _, _ in near)
+    return f"(alias tip: also close — {names}; re-run `pick <name>` if you meant one of these)"
 
 
 # ---------- main -------------------------------------------------------------
@@ -619,14 +720,29 @@ def main():
         return 3
 
     # Resolve alias -> id (alias takes precedence over UUID/prefix search).
+    orig_query = args.query
     alias_name = None
     real_id = None
-    alias_info = _resolve_alias(args.query)
+    near_aliases = []  # close alias names — hint after resume, or a pick-list
+    alias_data = _load_aliases()
+    alias_info = _resolve_alias(orig_query, alias_data)
     if alias_info:
         real_id, tool_hint, alias_name = alias_info
         args.query = real_id
         if args.type is None and tool_hint:
             args.type = tool_hint
+        # Surface strong near-misses (prefix/typo) as a low-noise hint, so a
+        # remembered-but-imprecise name like "test" still reveals "testb".
+        near_aliases = [c for c in _find_alias_candidates(orig_query, alias_data, exclude=alias_name)
+                        if c[2] in ("prefix", "typo")][:3]
+    else:
+        # No exact alias. Before falling back to UUID/prefix search, offer close
+        # alias names — the user likely misremembered one (Ctrl+R / autojump style).
+        cands = _find_alias_candidates(orig_query, alias_data)
+        if cands:
+            print(_render_alias_candidates(orig_query, cands))
+            return 2
+        # No close alias either; treat orig_query as a UUID/prefix below.
 
     results = _search(args.query, args.type)
 
@@ -659,6 +775,8 @@ def main():
                 print("\n(copied relaunch command to clipboard)")
             else:
                 print("\n(pbcopy unavailable — copy the command above manually)")
+        if near_aliases:
+            print(_format_alias_hint(near_aliases))
         return 0
 
     # Light locate mode.
@@ -674,6 +792,8 @@ def main():
             print("\n(copied resume command to clipboard)")
         else:
             print("\n(pbcopy unavailable — copy the command above manually)")
+    if near_aliases:
+        print(_format_alias_hint(near_aliases))
     return 0
 
 

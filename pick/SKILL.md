@@ -62,6 +62,11 @@ Both tools use UUIDs, so format alone can't tell them apart. The script decides 
 
 Sessions can be given short names via the `throw` skill (stored in `~/.agents/skills/throw/aliases.json`). When the user gives an alias name instead of a UUID, the locator resolves it to the stored id before searching — **aliases take precedence over UUID/prefix lookup**. The stored tool (if any) is used as a `--type` hint. The output prints `(via alias '<name>' -> <id>)` so the resolution is visible.
 
+Alias names don't need to be exact — the locator scores every alias against the input (exact > prefix > substring > fuzzy subsequence > typo via edit distance), so a half-remembered name still lands:
+- **Exact hit** → resume that alias. If a near-miss sibling also exists (e.g. you typed `test` but `testb` is also aliased), a one-line `(alias tip: also close — testb)` hint follows the resume — low-noise, no interruption.
+- **No exact hit, but close aliases** → it prints a ranked `did you mean one of these?` list (Ctrl+R / autojump style) and exits 2, so you re-run with the name you meant. This is the common case when the name is on the tip of your tongue.
+- **No close alias either** → the input is treated as a UUID/prefix and session search proceeds as usual (so a real UUID is never hijacked by a fuzzy alias match).
+
 Manage aliases with the sibling skill:
 
 ```bash

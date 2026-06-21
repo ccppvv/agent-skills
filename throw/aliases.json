@@ -5,5 +5,17 @@
     "note": "throw + pick 配对 skill 的构建 session",
     "project": "/Users/v/Apps/TypeLess",
     "tool": "claude"
+  },
+  "pear-skills": {
+    "created": "2026-06-21 19:48",
+    "id": "efe6ea00-5855-43cf-a5f0-03eb5a4f03bc",
+    "project": "/Users/v/Minds",
+    "tool": "claude"
+  },
+  "skill-sync": {
+    "created": "2026-06-21 20:00",
+    "id": "9f6b8a36-f339-4951-9727-5592c670483d",
+    "project": "/Users/v/Work/workstation-ccc-mui",
+    "tool": "claude"
   }
 }

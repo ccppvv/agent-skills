@@ -1,0 +1,214 @@
+# 输入定义模板 (JSON格式)
+
+{
+  "metadata": {
+    "sop_name": "请填写SOP名称",
+    "domain": "technical | content | analysis | generic",
+    "version": "1.0.0",
+    "description": "请在这里描述需要什么样的输入"
+  },
+  
+  "required_inputs": [
+    {
+      "name": "输入项1名称",
+      "description": "详细描述这个输入是什么，为什么需要",
+      "format": {
+        "type": "string | number | object | array | file",
+        "structure": "如果是对象或数组，描述内部结构",
+        "validation": "格式验证规则（如：email格式、数值范围等）"
+      },
+      "examples": [
+        "提供1-2个标准的输入示例",
+        "确保示例反映了所有格式要求"
+      ],
+      "quality_requirements": {
+        "completeness": "完整度要求（如：必填字段）",
+        "accuracy": "准确度要求（如：数据源验证）",
+        "consistency": "一致性要求（如：与其他输入的关系）"
+      }
+    },
+    {
+      "name": "输入项2名称",
+      "description": "详细描述这个输入是什么，为什么需要",
+      "format": {
+        "type": "string | number | object | array | file",
+        "structure": "描述内部结构",
+        "validation": "格式验证规则"
+      },
+      "examples": [
+        "标准输入示例"
+      ],
+      "quality_requirements": {
+        "completeness": "完整度要求",
+        "accuracy": "准确度要求",
+        "consistency": "一致性要求"
+      }
+    }
+  ],
+  
+  "optional_inputs": [
+    {
+      "name": "可选输入项名称",
+      "description": "为什么这个输入是可选的，有什么价值",
+      "format": {
+        "type": "string | number | object | array | file",
+        "structure": "描述内部结构（如果适用）"
+      },
+      "purpose": "这个输入如何帮助提高结果质量",
+      "examples": [
+        "如果提供了这个输入会有怎样的正面影响"
+      ]
+    }
+  ],
+  
+  "relationships": {
+    "dependencies": [
+      {
+        "inputs": ["输入A", "输入B"],
+        "relationship": "输入A和输入B必须同时提供或同时不提供"
+      }
+    ],
+    "conflicts": [
+      {
+        "inputs": ["输入C", "输入D"],
+        "relationship": "输入C和输入D不能同时提供"
+      }
+    ]
+  },
+  
+  "validation_rules": {
+    "automated_checks": [
+      {
+        "check_name": "必填字段完整性检查",
+        "implementation": "自动脚本验证所有必填字段是否都有值",
+        "error_handling": "如果检查失败，生成详细错误报告"
+      },
+      {
+        "check_name": "格式合规性验证",
+        "implementation": "验证输入格式是否符合预定要求",
+        "error_handling": "如果检查失败，提供格式修正建议"
+      }
+    ],
+    "manual_checks": [
+      {
+        "check_name": "逻辑一致性检查",
+        "procedure": "人工审查输入之间的逻辑关系",
+        "checklist": [
+          "检查项1：...",
+          "检查项2：..."
+        ]
+      }
+    ]
+  },
+  
+  "exception_handling": {
+    "missing_required_input": {
+      "scenario": "必填输入缺失",
+      "action": "立即终止处理，返回详细错误信息",
+      "error_message_pattern": "必填输入'{input_name}'缺失。请提供：{expected_format}"
+    },
+    "invalid_format": {
+      "scenario": "输入格式不符合要求",
+      "action": "尝试自动修复或返回格式建议",
+      "suggested_fixes": [
+        "如果可能，自动修正常见格式错误",
+        "提供格式模板和示例"
+      ]
+    },
+    "quality_issues": {
+      "scenario": "输入质量不达标",
+      "action": "警告用户潜在问题，询问是否继续",
+      "warning_pattern": "输入'{input_name}'的{quality_metric}不达标。建议：{suggestion}"
+    }
+  },
+  
+  "preprocessing_steps": [
+    {
+      "step": "数据清洗",
+      "description": "移除或修复明显的错误数据",
+      "automation_level": "高 - 可完全自动化"
+    },
+    {
+      "step": "格式标准化",
+      "description": "将不同格式的输入统一为标准格式",
+      "automation_level": "中 - 需要部分人工验证"
+    },
+    {
+      "step": "补充缺省值",
+      "description": "为可选输入提供合理的缺省值",
+      "automation_level": "低 - 需要人工决策"
+    }
+  ],
+  
+  "examples": {
+    "complete_example": {
+      "description": "一个完整正确的输入示例",
+      "data": {
+        "输入项1名称": "示例值1",
+        "输入项2名称": "示例值2",
+        "可选输入项名称": "可选示例值"
+      },
+      "explanation": "解释为什么这个示例是正确的"
+    },
+    "error_example": {
+      "description": "包含常见错误的输入示例",
+      "data": {
+        "输入项1名称": "错误的格式值",
+        "输入项2名称": null
+      },
+      "errors": [
+        "错误1：输入格式不符合要求",
+        "错误2：必填字段为空值"
+      ],
+      "correction": {
+        "corrected_data": {
+          "输入项1名称": "正确格式值",
+          "输入项2名称": "必需的值"
+        },
+        "explanation": "如何修正这些错误"
+      }
+    }
+  },
+  
+  "quality_metrics": {
+    "input_quality_score": {
+      "calculation": "(符合要求的输入项数 / 总输入项数) × 100",
+      "target": "≥95%",
+      "importance": "高 - 直接影响处理结果质量"
+    },
+    "format_compliance_rate": {
+      "calculation": "(格式符合要求的字符数 / 总字符数) × 100",
+      "target": "≥90%",
+      "importance": "中 - 高符合率可降低处理错误"
+    }
+  },
+  
+  "testing_guidance": {
+    "unit_tests": [
+      {
+        "test_name": "必填字段验证测试",
+        "purpose": "确保所有必填字段都被正确处理",
+        "test_cases": [
+          "所有必填字段都有值 → 应该通过",
+          "任意必填字段缺失 → 应该失败"
+        ]
+      },
+      {
+        "test_name": "格式验证测试",
+        "purpose": "确保输入格式验证正确工作",
+        "test_cases": [
+          "正确格式的输入 → 应该通过",
+          "错误格式的输入 → 应该失败并给出恰当错误信息"
+        ]
+      }
+    ],
+    "integration_tests": [
+      {
+        "test_name": "端到端输入处理测试",
+        "purpose": "验证整个输入处理流程",
+        "test_data": "使用真实或模拟的完整输入数据集",
+        "success_criteria": "处理后输出符合预期的预处理结果"
+      }
+    ]
+  }
+}

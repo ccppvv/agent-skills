@@ -1,0 +1,391 @@
+# SOP.yaml - 标准SOP模板
+
+# SOP元数据
+metadata:
+  sop_name: "请填写SOP名称"
+  version: "1.0.0"
+  created_date: "2025-01-01"
+  last_updated: "YYYY-MM-DD"
+  owner: "负责人姓名/团队"
+  
+  domain: "technical | content | analysis | generic"
+  complexity: "low | medium | high"
+  estimated_time: "预计执行时间（小时）"
+  
+  description: |
+    请在这里描述这个SOP的目的和价值。
+    回答以下问题：
+    1. 这个SOP要解决什么问题？
+    2. 谁将使用这个SOP？
+    3. 使用这个SOP有什么价值？
+
+# 输入定义
+input_definition:
+  
+  # 必填输入
+  required_inputs:
+    - name: "输入项1名称"
+      description: "详细描述这个输入是什么，为什么需要"
+      format: "要求的格式（如：JSON、YAML、自然语言文本等）"
+      validation: "验证规则，AI如何检查这个输入的有效性"
+      
+    - name: "输入项2名称"
+      description: "详细描述这个输入是什么，为什么需要"
+      format: "要求的格式"
+      validation: "验证规则"
+      
+  # 可选输入
+  optional_inputs:
+    - name: "可选输入项1名称"
+      description: "为什么这个输入是可选的，有什么价值"
+      format: "要求的格式"
+      purpose: "这个输入如何帮助提高结果质量"
+      
+  # 输入验证规则
+  validation_rules:
+    - rule: "规则1描述"
+      automated_check: "是，使用脚本检查 | 否，需要人工验证"
+      
+    - rule: "规则2描述"
+      automated_check: "是，使用脚本检查 | 否，需要人工验证"
+      
+  # 异常处理
+  exception_handling:
+    missing_input: "当必填输入缺失时的处理方案"
+    invalid_format: "当输入格式不符合要求时的处理方案"
+    data_inconsistency: "当数据存在不一致性时的处理方案"
+
+# 处理流程
+processing_flow:
+  
+  # 步骤1：输入验证
+  step_1:
+    name: "输入接收与验证"
+    description: "接收并验证所有输入信息"
+    
+    sub_steps:
+      - action: "检查必填字段完整性"
+        success_criteria: "所有必填字段都有值"
+        
+      - action: "验证数据格式符合要求"
+        success_criteria: "所有输入符合预定格式"
+        
+      - action: "识别潜在的输入异常"
+        success_criteria: "发现并报告所有异常"
+        
+    output_checkpoint: "输入验证报告"
+    
+    decision_points:
+      - condition: "如果发现严重输入异常"
+        action: "终止处理并上报问题"
+        reason: "无法继续执行，需要人工干预"
+        
+  # 步骤2：预处理
+  step_2:
+    name: "信息预处理"
+    description: "对输入信息进行初步处理"
+    
+    sub_steps:
+      - action: "结构化整理输入信息"
+        success_criteria: "信息已按标准结构组织"
+        
+      - action: "提取核心参数和约束"
+        success_criteria: "所有关键参数已识别"
+        
+      - action: "确定处理优先级"
+        success_criteria: "建立清晰的执行优先级"
+        
+    output_checkpoint: "预处理结果摘要"
+    
+  # 更多步骤...
+  
+  # 质量控制点
+  quality_gates:
+    - gate: "Q1 - 输入质量门"
+      checkpoint: "步骤1完成后"
+      criterion: "所有输入通过基本验证"
+      action_if_failed: "修订输入或终止"
+      
+    - gate: "Q2 - 处理质量门"
+      checkpoint: "步骤N完成后"
+      criterion: "中间结果符合预期质量"
+      action_if_failed: "重新处理或采用备用方案"
+
+# 输出标准
+output_standards:
+  
+  # 输出格式要求
+  format_requirements:
+    
+    # 第一部分：总结
+    section_summary:
+      title: "总结"
+      content_requirements:
+        - requirement: "目标完成情况摘要"
+          description: "简要说明任务目标完成情况"
+          format: "结构化摘要，包含量化结果"
+          
+        - requirement: "关键成果亮点"
+          description: "突出最重要的成果"
+          format: "要点列表，按重要性排序"
+          
+        - requirement: "总体质量评估"
+          description: "对整个结果的总体评价"
+          format: "综合评分和评语"
+          
+    # 第二部分：问题清单
+    section_issues:
+      title: "问题清单"
+      content_requirements:
+        - requirement: "问题分类"
+          description: "按严重程度分类（严重/重要/一般）"
+          format: "带分类标签的问题列表"
+          
+        - requirement: "问题详细描述"
+          description: "具体的问题现象和影响"
+          format: "结构化描述，包括：现象、影响、位置"
+          
+        - requirement: "重现步骤"
+          description: "如何重现问题的具体步骤"
+          format: "编号步骤列表"
+          
+    # 第三部分：修改建议
+    section_recommendations:
+      title: "修改建议"
+      content_requirements:
+        - requirement: "建议优先级"
+          description: "按实施优先级排序（高/中/低）"
+          format: "带优先级标签的建议列表"
+          
+        - requirement: "实施步骤"
+          description: "具体的实施改进步骤"
+          format: "可执行的行动项列表"
+          
+        - requirement: "预期效果"
+          description: "实施后的预期改进效果"
+          format: "量化指标描述"
+          
+    # 第四部分：学习要点
+    section_learnings:
+      title: "学习要点"
+      content_requirements:
+        - requirement: "最佳实践发现"
+          description: "本次执行中发现的新最佳实践"
+          format: "要点式知识记录"
+          
+        - requirement: "可复用模式"
+          description: "可重复使用的模式或技巧"
+          format: "模板或代码片段"
+          
+        - requirement: "陷阱避免"
+          description: "需要避免的错误和陷阱"
+          format: "经验教训总结"
+          
+  # 质量标准（按领域定义）
+  quality_standards:
+    
+    # 技术开发领域示例
+    technical:
+      - metric: "代码规范符合度"
+        threshold: "≥95%"
+        measurement_method: "自动化代码检查工具"
+        
+      - metric: "单元测试覆盖率"
+        threshold: "≥85%"
+        measurement_method: "测试覆盖率报告"
+        
+      - metric: "安全漏洞数"
+        threshold: "0"
+        measurement_method: "安全扫描工具"
+        
+    # 内容创作领域示例
+    content:
+      - metric: "格式规范评分"
+        threshold: "≥90分"
+        measurement_method: "格式检查清单"
+        
+      - metric: "核心信息完整度"
+        threshold: "100%"
+        measurement_method: "完整性检查清单"
+        
+      - metric: "原创性要求"
+        threshold: "≥80%"
+        measurement_method: "抄袭检测工具"
+        
+    # 数据分析领域示例
+    analysis:
+      - metric: "数据准确率"
+        threshold: "≥99.5%"
+        measurement_method: "数据验证脚本"
+        
+      - metric: "洞察价值评估"
+        threshold: "≥8/10"
+        measurement_method: "专家评审评分"
+        
+  # 验证方法
+  verification_methods:
+    - method: "自动检查"
+      description: "使用脚本自动检查标准符合性"
+      automation_level: "高"
+      
+    - method: "人工评审"
+      description: "专家进行质量评审"
+      automation_level: "低"
+      
+    - method: "对比分析"
+      description: "与历史数据或基准对比"
+      automation_level: "中"
+
+# 迭代改进机制
+iteration_improvement:
+  
+  # 反馈收集点
+  feedback_points:
+    - point: "输入验证阶段"
+      feedback_type: "数据质量反馈"
+      collection_method: "自动记录+人工报告"
+      
+    - point: "处理执行阶段"
+      feedback_type: "流程效率反馈"
+      collection_method: "执行日志分析"
+      
+    - point: "输出验证阶段"
+      feedback_type: "结果质量反馈"
+      collection_method: "质量评分和用户反馈"
+      
+  # 跟踪指标
+  tracking_metrics:
+    - metric: "执行成功率"
+      target: "≥95%"
+      frequency: "每次执行"
+      data_source: "执行日志"
+      
+    - metric: "质量标准达标率"
+      target: "≥90%"
+      frequency: "每次执行"
+      data_source: "质量检查报告"
+      
+    - metric: "用户满意度"
+      target: "≥85%"
+      frequency: "每月"
+      data_source: "用户调查问卷"
+      
+  # 改进流程
+  improvement_process:
+    - step: "收集执行数据和反馈"
+    - step: "分析根本原因和系统性改进点"
+    - step: "更新SOP模板和检查清单"
+    - step: "验证改进效果并记录学习"
+    - step: "在团队内部分享最佳实践"
+    
+  # 版本控制
+  version_control:
+    requirement: "每次重大更新都创建新版本"
+    documentation: "更新变更日志"
+    notification: "通知相关用户和团队"
+
+# 可复制性设计
+reproducibility_design:
+  
+  new_user_guidance:
+    - item: "完整背景知识库链接"
+    - item: "常见问题解答（FAQ）"
+    - item: "逐步指导的工作流程图"
+    - item: "错误排查指南"
+    
+  templates_and_tools:
+    - item: "标准输入模板"
+    - item: "自动化检查脚本"
+    - item: "质量评估报告模板"
+    - item: "改进建议模板"
+    
+  learning_support:
+    - item: "新手练习场景示例"
+    - item: "学习效果评估标准"
+    - item: "导师指导流程"
+    - item: "知识库和参考资料"
+
+# 可自动化设计
+automation_design:
+  
+  automation_score: "1-4评分（1=完全自动化，4=低度自动化）"
+  
+  ai_execution_signals:
+    - signal: "清晰的输入格式定义"
+      status: "已实现｜待实现"
+      
+    - signal: "结构化的处理步骤"
+      status: "已实现｜待实现"
+      
+    - signal: "可量化的输出标准"
+      status: "已实现｜待实现"
+      
+    - signal: "明确的异常处理规则"
+      status: "已实现｜待实现"
+      
+  automated_components:
+    - component: "输入验证脚本"
+      maturity: "原型｜生产｜待开发"
+      
+    - component: "质量检查工具"
+      maturity: "原型｜生产｜待开发"
+      
+    - component: "报告生成工具"
+      maturity: "原型｜生产｜待开发"
+      
+    - component: "反馈收集系统"
+      maturity: "原型｜生产｜待开发"
+
+# 关键价值检查
+key_value_check:
+  
+  # 可复制性检查
+  reproducibility_check:
+    - question: "新人能否仅凭这个SOP完成任务？"
+      answer: "详细说明为什么能或不能"
+      
+    - question: "SOP是否提供了足够的背景知识？"
+      answer: "列举提供的背景知识"
+      
+    - question: "是否有常见问题的解决方案？"
+      answer: "列举常见问题及其解决方案"
+      
+  # 可优化性检查  
+  optimization_check:
+    - question: "SOP是否有明确的反馈收集点？"
+      answer: "列举反馈收集点和收集方法"
+      
+    - question: "是否有数据驱动的改进机制？"
+      answer: "描述使用的数据和改进流程"
+      
+    - question: "如何确保每次都比上一次更好？"
+      answer: "描述迭代改进的具体方法"
+      
+  # 可自动化检查
+  automation_check:
+    - question: "AI能否直接执行每个步骤？"
+      answer: "说明哪些步骤可直接自动化，哪些需要人工介入"
+      
+    - question: "是否有模糊的决策标准需要人类经验？"
+      answer: "识别需要人类判断的决策点"
+      
+    - question: "是否可以完全自动化执行？"
+      answer: "评估当前自动化水平和发展路径"
+
+# 使用说明
+usage_instructions:
+  
+  before_use:
+    - action: "确认所有输入信息已准备"
+    - action: "检查相关工具和系统可用性"
+    - action: "分配足够的执行时间和资源"
+    
+  during_execution:
+    - action: "按照步骤顺序执行，不跳过"
+    - action: "记录所有异常和决策点"
+    - action: "在检查点进行质量验证"
+    
+  after_execution:
+    - action: "收集执行反馈和改进建议"
+    - action: "更新SOP版本和知识库"
+    - action: "分享学习要点和最佳实践"

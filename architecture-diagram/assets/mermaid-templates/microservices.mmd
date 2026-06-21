@@ -1,0 +1,41 @@
+graph TB
+    %% 用户层
+    User[👤 用户] --> Gateway[🌐 API网关]
+    
+    %% 服务层
+    Gateway --> UserSvc[👤 用户服务]
+    Gateway --> OrderSvc[🛒 订单服务]
+    Gateway --> ProductSvc[📦 产品服务]
+    Gateway --> PaymentSvc[💳 支付服务]
+    
+    %% 服务间通信
+    OrderSvc -.消息.-> UserSvc
+    OrderSvc -.消息.-> ProductSvc
+    OrderSvc --> PaymentSvc
+    
+    %% 数据层
+    UserSvc --> UserDB[(👤 用户DB)]
+    OrderSvc --> OrderDB[(🛒 订单DB)]
+    ProductSvc --> ProductDB[(📦 产品DB)]
+    PaymentSvc --> PaymentDB[(💳 支付DB)]
+    
+    %% 缓存层
+    UserSvc --> Cache[(⚡ Redis)]
+    OrderSvc --> Cache
+    ProductSvc --> Cache
+    
+    %% 消息队列
+    OrderSvc -.-> MQ[📮 消息队列]
+    PaymentSvc -.-> MQ
+    
+    %% 外部服务
+    PaymentSvc -.-> ExtPay[☁️ 第三方支付]
+    
+    %% 样式定义
+    classDef core fill:#4A90E2,stroke:#2E5C8A,color:#fff
+    classDef infra fill:#F5A623,stroke:#C17D11,color:#fff
+    classDef external fill:#7ED321,stroke:#5FA319,color:#fff
+    
+    class UserSvc,OrderSvc,ProductSvc,PaymentSvc core
+    class UserDB,OrderDB,ProductDB,PaymentDB,Cache,MQ infra
+    class ExtPay external

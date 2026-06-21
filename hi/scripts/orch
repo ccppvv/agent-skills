@@ -1,0 +1,7 @@
+#!/bin/bash
+# Ally Orchestrator 快捷命令
+# 用法：orch <command> <args>
+
+SCRIPT_DIR="$HOME/.agents/skills/ally-orchestrator/scripts"
+
+python3 "$SCRIPT_DIR/orchestrator.py" "$@"

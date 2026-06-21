@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "scenario": "战略决策 + 认知偏差",
+    "categories": ["strategic", "decision-making", "cognitive", "cognitive-extended"],
+    "prompt": "我在大厂做中层，现在有个机会去一家 A 轮创业公司做技术 VP，薪资降 30% 但股份可观。大厂稳定但上升空间有限，创业公司有爆发可能但风险很高。我该不该去？",
+    "expected": "命中 strategic/decision-making/cognitive/cognitive-extended。用第一性原理（本质是职业杠杆选择）、机会成本分析、后悔最小化框架、损失厌恶+过度自信偏差检查。可逆性判断（是否可回退）。输出标准模式。"
+  },
+  {
+    "id": 2,
+    "scenario": "系统思维 + 管理 + 项目管理 + 网络科学",
+    "categories": ["systems", "management", "project-management", "network-science"],
+    "prompt": "我们团队的项目已经连续三个月延期了，每次 Sprint Review 大家都说下个 Sprint 会好，但每个月都在重复同样的问题。到底哪里出了问题？",
+    "expected": "命中 systems/management/project-management/network-science。用系统思维找反馈循环（延期→赶工→质量下降→更延期），管理幅度和委托授权问题，关键路径分析，团队协作网络中的瓶颈节点。反证条件：如果技术栈没问题，那是流程还是人的问题？"
+  },
+  {
+    "id": 3,
+    "scenario": "概率 + 风险管理 + 金融工程 + 数据科学",
+    "categories": ["probability", "risk-management", "financial-engineering", "data-science"],
+    "prompt": "我想把 50 万闲钱投进 crypto，朋友说现在是牛市中期还能涨 3 倍，我该 All in 还是定投？怎么控制风险？",
+    "expected": "命中 probability/risk-management/financial-engineering/data-science。用贝叶斯思维（牛熊概率更新）、风险矩阵（损失概率×影响）、投资组合理论（仓位管理）、安全边际、偏差-方差权衡（过度拟合历史走势）。深度模式含止损条件和监控指标。"
+  },
+  {
+    "id": 4,
+    "scenario": "经济学 + 行为经济学 + 博弈论 + 竞争战略",
+    "categories": ["economics", "behavioral-economics", "game-theory", "competitive-strategy"],
+    "prompt": "我们 SaaS 产品的两个竞品最近都降价了 40%，销售团队也催着跟进。如果我不降价，客户可能会流失；如果降价，毛利就垮了。怎么破？",
+    "expected": "命中 economics/behavioral-economics/game-theory/competitive-strategy。用供需关系分析（价格弹性）、损失厌恶（客户对涨价的非对称反应）、囚徒困境（竞品博弈）、差异化战略（避开价格战，找护城河）、BATNA/ZOPA 分析。行动建议分 P0/P1/P2。"
+  },
+  {
+    "id": 5,
+    "scenario": "心理学深度 + 神经科学 + 学习 + 沟通",
+    "categories": ["psychology-deep", "neuroscience", "learning", "communication"],
+    "prompt": "我发现自己总是在晚上下定决心第二天要早起学习，但到了早上就是起不来。每次都这样，已经一年了。我是不是意志力有问题？",
+    "expected": "命中 psychology-deep/neuroscience/learning/communication。用认知失调（言行不一）、多巴胺奖励机制（即时满足 vs 延迟满足）、间隔重复和习惯养成（不是意志力问题是系统问题）、积极倾听（自我对话）。偏差检查：基本归因错误（归咎意志力而非环境设计）。"
+  },
+  {
+    "id": 6,
+    "scenario": "营销 + 创新 + 设计",
+    "categories": ["marketing", "innovation", "design"],
+    "prompt": "我做了个面向设计师的 AI 工具，功能比 Figma 的 AI 功能强很多，但就是没人用。在 Product Hunt 上线才 200 个注册。怎么破局？",
+    "expected": "命中 marketing/innovation/design。用稀缺性/社会证明/锚定效应（定价和对比策略）、颠覆性创新（是不是在一个非主流市场打响）、蓝海战略（找 Figma 不重视的细分）、格式塔原理（产品感知）。行动建议含最小验证动作。"
+  },
+  {
+    "id": 7,
+    "scenario": "复杂性 + 生物学 + 物理学 + 数学",
+    "categories": ["complexity", "biology", "physics", "mathematics"],
+    "prompt": "我观察到互联网平台的增长曲线越来越像生物进化——先指数增长，然后触及天花板，有些消亡了，有些分化出新物种。如果用自然选择的视角来看，现在的 AI 平台竞争谁会活下来？",
+    "expected": "命中 complexity/biology/physics/mathematics。用混沌理论（初始条件敏感）、红皇后效应（必须不断奔跑才能留在原地）、自然选择/适应灭绝缘、相变/临界质量（增长到何种程度触发质变）、奥卡姆剃刀（最简解释）。深层次跨学科类比分析。"
+  },
+  {
+    "id": 8,
+    "scenario": "信息论 + 哲学 + 社会学 + 人类学",
+    "categories": ["information-theory", "philosophy", "sociology", "anthropology"],
+    "prompt": "我公司要推一套新的 OKR 系统，全员都要用。但大家反馈说这又是一套形式主义，只会增加汇报负担不会真正帮到业务。我是推行负责人，该怎么说服大家？",
+    "expected": "命中 information-theory/philosophy/sociology/anthropology。用信噪比分析（OKR 的实际信号 vs 噪音）、功利主义 vs 义务论（工具理性 vs 制度本身的价值）、创新扩散（谁先接受谁后抵制）、旁观者效应（大家等别人先认真）。文化相对主义视角。"
+  },
+  {
+    "id": 9,
+    "scenario": "法律政策 + 军事战略 + 医学 + 认知语言学",
+    "categories": ["law-policy", "military-strategy", "medicine-health", "cognitive-linguistics"],
+    "prompt": "我爸被诊断出早期肺癌，医生建议手术切除，但我妈听说有中医调理成功的案例，现在家里意见分歧很大。我该怎么判断？",
+    "expected": "命中 law-policy/military-strategy/medicine-health/cognitive-linguistics。用举证责任（循证 vs 个案）、战争迷雾（信息不完备下的决策）、非对称战争（西医 vs 中医不是同一个赛道的竞争）、剂量-反应关系、鉴别诊断、概念隐喻（"调理"vs"切除"的框架差异）。**必须切深度模式，显式声明专业边界。** 含止损条件、盲区提示、医疗专业建议声明。"
+  },
+  {
+    "id": 10,
+    "scenario": "环境可持续 + 跨类别综合",
+    "categories": ["environment-sustainability"],
+    "prompt": "公司要选供应商，一个便宜 30% 但环保记录差，另一个贵但全绿链。我是采购负责人，选便宜的老板高兴，选贵的良心过得去。怎么选？",
+    "expected": "命中 environment-sustainability + 自动关联 strategic/behavioral-economics/cognitive。用承载力（长期环境成本 vs 短期节省）、外部性（谁承担污染成本）、激励机制（老板的考核导向 vs 长期企业价值）、损失厌恶（选错的痛感不对称）。偏差检查：现时偏差（把现在的成本看得比未来的更重要）。输出含缺失信息和验证点。"
+  }
+]

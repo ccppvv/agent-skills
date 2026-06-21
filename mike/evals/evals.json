@@ -1,0 +1,277 @@
+{
+  "skill_name": "mike",
+  "version": "4.0.0",
+  "routing": "three-layer: structure(10) × complexity(3) × domain(5)",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我现在拿到两个 offer，一个是大厂稳定岗，一个是创业公司核心岗位。你别直接替我选，帮我从机会成本、二阶影响和可逆性角度分析我该怎么判断。",
+      "expected_output": "应触发 mike，识别为「决策」结构，匹配 strategic/decision-making/economics/probability 类别。",
+      "expectations": [
+        "The skill should trigger for a complex personal decision.",
+        "Structure identified as 决策 with opportunity-cost/second-order/reversibility analysis."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "我们团队最近协作越来越差，会议更多了但推进更慢。帮我别停留在表面，按系统思维和激励机制拆一下根因。",
+      "expected_output": "应触发 mike，识别为「诊断」结构，匹配 systems/economics/psychology-deep 类别。",
+      "expectations": [
+        "The skill should trigger for root-cause diagnosis.",
+        "Structure identified as 诊断 with systems thinking and incentives analysis."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "我在考虑要不要把今年利润继续投增长，还是保守一点留现金。你帮我做个风险评估，重点看尾部风险和认知偏差。",
+      "expected_output": "应触发 mike，识别为「评估」结构，匹配 probability/risk-management/economics 类别。",
+      "expectations": [
+        "The skill should trigger for risk assessment and investment evaluation.",
+        "Structure identified as 评估 with tail risk and cognitive bias analysis."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "我总觉得现在这个产品方向不太对，但说不清问题在哪。你能不能帮我从第一性原理和用户价值角度重新审视一下？",
+      "expected_output": "应触发 mike，识别为「诊断」结构，匹配 strategic/innovation/cognitive 类别。",
+      "expectations": [
+        "The skill should trigger for strategic reframing.",
+        "Structure identified as 诊断 with first-principles product direction analysis."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "帮我权衡一下，是继续做 toB 定制开发，还是转成标准化产品。别给泛建议，我想看每条路的长期后果和隐藏代价。",
+      "expected_output": "应触发 mike，识别为「决策」结构，匹配 strategic/economics/innovation 类别。",
+      "expectations": [
+        "The skill should trigger for evaluating strategic alternatives.",
+        "Structure identified as 决策 with long-term consequence and hidden cost analysis."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "我最近连续做了几个看起来都对的决定，结果都不太好。你帮我看看是不是有固定的认知偏差在影响我判断。",
+      "expected_output": "应触发 mike，识别为「诊断」结构，匹配 cognitive/psychology-deep/behavioral-economics 类别。",
+      "expectations": [
+        "The skill should trigger for cognitive bias diagnosis.",
+        "Structure identified as 诊断 with judgment quality improvement focus."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "我们公司现在讨论要不要进入一个新市场。请你像顾问一样，帮我从竞争结构、可选择性和最坏情况三个维度评估。",
+      "expected_output": "应触发 mike，识别为「评估」结构，匹配 strategic/competitive-strategy/risk-management 类别。",
+      "expectations": [
+        "The skill should trigger for market-entry strategy evaluation.",
+        "Structure identified as 评估 with competitive analysis and optionality."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "我不想听鸡汤，帮我认真分析下：我该不该读 MBA，还是把这两年直接投入创业。",
+      "expected_output": "应触发 mike，识别为「决策」结构，匹配 strategic/economics/learning 类别。",
+      "expectations": [
+        "The skill should trigger for a major life tradeoff.",
+        "Structure identified as 决策 with MBA vs. entrepreneurship analysis."
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "mike，帮我用二阶思维、机会成本和安全边际分析一下现在要不要买房。",
+      "expected_output": "应触发 mike，识别为「决策」结构，显式 skill 名称触发。",
+      "expectations": [
+        "The skill should trigger when explicitly addressed by name.",
+        "Structure identified as 决策 with second-order/opportunity-cost/margin-of-safety."
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "帮我从系统、概率、激励三个视角拆解一下，为什么我们这个增长策略最近越投钱越没效果。",
+      "expected_output": "应触发 mike，识别为「诊断」结构，匹配 systems/probability/economics 类别。",
+      "expectations": [
+        "The skill should trigger for multi-lens diagnostic breakdown.",
+        "Structure identified as 诊断 with systems/probability/incentives lenses."
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "我要跟投资方谈估值，对方开价太低，怎么用博弈论和 BATNA 方法让谈判结果更有利于我？",
+      "expected_output": "应触发 mike，识别为「谈判」结构，匹配 game-theory/communication/psychology-deep 类别。",
+      "expectations": [
+        "The skill should trigger for negotiation strategy.",
+        "Structure identified as 谈判 with game theory and BATNA analysis."
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "这个 SaaS 项目三年 ROI 预估 300%，帮我从期望值和尾部风险角度评估值不值得全力投入。",
+      "expected_output": "应触发 mike，识别为「评估」结构，匹配 probability/risk-management/financial-engineering 类别。",
+      "expectations": [
+        "The skill should trigger for investment ROI evaluation.",
+        "Structure identified as 评估 with expected-value and tail-risk analysis."
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "我想三个月内转行做 AI，不知道学习路径怎么规划最高效，帮我用刻意练习和第一性原理拆一下。",
+      "expected_output": "应触发 mike，识别为「学习」结构，匹配 learning/cognitive/strategic 类别。",
+      "expectations": [
+        "The skill should trigger for career-change learning path.",
+        "Structure identified as 学习 with deliberate-practice and first-principles."
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "团队氛围很差，新人和老员工之间不交流，怎么从心理安全和激励机制角度重建信任？",
+      "expected_output": "应触发 mike，识别为「领导」结构，匹配 management/psychology-deep/economics 类别。",
+      "expectations": [
+        "The skill should trigger for team leadership diagnosis.",
+        "Structure identified as 领导 with psychological-safety and incentives."
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "我们产品跟竞品太像了，怎么找到差异化的突破口？用第一性原理和蓝海战略帮我分析。",
+      "expected_output": "应触发 mike，识别为「创新」结构，匹配 innovation/strategic/design 类别。",
+      "expectations": [
+        "The skill should trigger for innovation and differentiation strategy.",
+        "Structure identified as 创新 with first-principles and blue-ocean strategy."
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "帮我写一个 React 组件，左边是筛选栏，右边是表格，支持分页和 loading state。",
+      "expected_output": "不应触发 mike，这是直接 UI 编码任务。",
+      "expectations": [
+        "The skill should not trigger for direct UI coding work.",
+        "The prompt is implementation-oriented, not decision analysis."
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "登录接口 500 了，报错是 token 解析失败，帮我定位问题并修一下。",
+      "expected_output": "不应触发 mike，这是工程 bugfix。",
+      "expectations": [
+        "The skill should not trigger for debugging and fixing code.",
+        "The prompt is operational engineering work."
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "给我做一个三个月英语学习计划，我每天能拿出 40 分钟。",
+      "expected_output": "不应触发 mike，这是通用学习规划，无 tradeoff/diagnosis 信号。",
+      "expectations": [
+        "The skill should not trigger for a generic learning plan.",
+        "The prompt lacks explicit tradeoff, diagnosis, or framework analysis needs."
+      ]
+    },
+    {
+      "id": 19,
+      "prompt": "帮我优化一下这个着陆页文案，让转化率更高。",
+      "expected_output": "不应触发 mike，这是偏执行型优化请求。",
+      "expectations": [
+        "The skill should not trigger for straightforward conversion-copy optimization.",
+        "The prompt does not ask for decision frameworks or root-cause analysis."
+      ]
+    },
+    {
+      "id": 20,
+      "prompt": "我想学系统思维，有没有一个入门路径，书单和练习方式都给我列一下。如果只是学习安排就按普通计划来，不必上升到复杂决策分析。",
+      "expected_output": "不应触发 mike，纯执行型学习安排。",
+      "expectations": [
+        "The skill should not trigger for generic study guidance alone.",
+        "A plain learning plan without tradeoff or diagnosis needs should not trigger."
+      ]
+    },
+    {
+      "id": 21,
+      "prompt": "帮我给这个 Figma 页面提几个 UI 改进建议，主要看按钮层级和视觉统一性。",
+      "expected_output": "不应触发 mike，这是具体设计评审。",
+      "expectations": [
+        "The skill should not trigger for narrow UI critique tasks.",
+        "The prompt is design execution feedback, not strategic reasoning."
+      ]
+    },
+    {
+      "id": 22,
+      "prompt": "我要把 Postgres 查询慢的问题解决掉，先帮我分析执行计划，再给优化建议。",
+      "expected_output": "不应触发 mike，这是数据库性能排查。",
+      "expectations": [
+        "The skill should not trigger for technical performance debugging.",
+        "The request belongs to implementation diagnostics, not mental-model analysis."
+      ]
+    },
+    {
+      "id": 23,
+      "prompt": "帮我整理一下这个周会纪要，提炼 5 个行动项。",
+      "expected_output": "不应触发 mike，这是通用整理任务。",
+      "expectations": [
+        "The skill should not trigger for summarization or note-taking tasks.",
+        "The prompt does not need a decision framework."
+      ]
+    },
+    {
+      "id": 24,
+      "prompt": "我们准备把 onboarding 流程改短一点，你先给我 10 个增长点子，越快越好。",
+      "expected_output": "不应触发 mike，这是头脑风暴/增长创意请求。",
+      "expectations": [
+        "The skill should not trigger for generic ideation alone.",
+        "The prompt asks for ideas, not structured decision analysis."
+      ]
+    },
+    {
+      "id": 25,
+      "prompt": "我需要写一份 PRD，主题是企业微信里的审批自动化，帮我按模块拆出来。",
+      "expected_output": "不应触发 mike，这是产品文档与需求拆解。",
+      "expectations": [
+        "The skill should not trigger for PRD drafting tasks.",
+        "The prompt is specification work, not a decision/tradeoff/diagnosis request."
+      ]
+    },
+    {
+      "id": 26,
+      "prompt": "帮我用 Python 写一个脚本，读取 CSV 然后画趋势图。",
+      "expected_output": "不应触发 mike，纯代码执行任务。",
+      "expectations": [
+        "The skill should not trigger for script writing.",
+        "Implementation task with no decision/diagnosis component."
+      ]
+    },
+    {
+      "id": 27,
+      "prompt": "怎样让我的简历更吸引人？给几个具体修改建议就行。",
+      "expected_output": "不应触发 mike，简单建议请求。",
+      "expectations": [
+        "The skill should not trigger for simple advice requests.",
+        "No framework analysis or tradeoff evaluation needed."
+      ]
+    },
+    {
+      "id": 28,
+      "prompt": "查一下这个 API 的 rate limit 是多少。",
+      "expected_output": "不应触发 mike，信息查询。",
+      "expectations": [
+        "The skill should not trigger for information lookup.",
+        "No analytical or decision-making component."
+      ]
+    },
+    {
+      "id": 29,
+      "prompt": "把这个邮件翻译成英文，保持语气正式。",
+      "expected_output": "不应触发 mike，翻译执行任务。",
+      "expectations": [
+        "The skill should not trigger for translation tasks.",
+        "Execution task with no analytical component."
+      ]
+    },
+    {
+      "id": 30,
+      "prompt": "帮我配一下 nginx 反向代理，把 /api 转发到 localhost:3000。",
+      "expected_output": "不应触发 mike，运维配置任务。",
+      "expectations": [
+        "The skill should not trigger for ops/configuration tasks.",
+        "Implementation task with no decision framework needed."
+      ]
+    }
+  ]
+}

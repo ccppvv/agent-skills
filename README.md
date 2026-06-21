@@ -1,2 +1,2 @@
 # agent-skills
-my self-built skills so useful that they should be illegal :)
+my collected and self-built skills so awesome that they should be illegal :)

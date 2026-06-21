@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Master"
+  short_description: "Visual restoration for manage and agent-flow packages"
+  default_prompt: "执行 manage 与 agent-flow 的视觉还原，优先 token 化与最小改动。"

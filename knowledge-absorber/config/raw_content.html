@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Source Knowledge Audit - LCS 真理审计报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --primary: #3b82f6;
+            --bg-gradient: radial-gradient(circle at top left, #f8fafc, #e2e8f0);
+            --text-main: #1e293b;
+            --font-main: 'Inter', system-ui, sans-serif;
+        }
+        [data-theme="dark"] {
+            --glass-bg: rgba(15, 23, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --primary: #60a5fa;
+            --bg-gradient: radial-gradient(circle at top left, #0f172a, #1e293b);
+            --text-main: #f1f5f9;
+        }
+            
+        
+        body {
+            font-family: var(--font-main);
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            transition: all 0.5s ease;
+        }
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        
+        /* Markdown Content Styling */
+        pre {
+            background: rgba(0,0,0,0.05);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+        [data-theme="dark"] pre {
+            background: rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl glass-panel z-50 px-6 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <span class="text-2xl">🧪</span>
+            <span class="font-bold text-xl tracking-tight">LCS 审计</span>
+        </div>
+        <div class="flex items-center gap-4 flex-1 max-w-md mx-8">
+            <button id="themeToggle" class="p-2 rounded-full bg-white/50 border border-white/20">🌓</button>
+            <div class="relative flex-1">
+                <input type="text" id="searchBar" placeholder="搜索内容..." onkeyup="searchContent()"
+                       class="w-full px-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white/50">
+            </div>
+        </div>
+        <div class="hidden md:flex space-x-6 font-semibold">
+            <a href="#overview" class="nav-link">概览</a>
+            <a href="#conflicts" class="nav-link">冲突</a>
+            <a href="#raw" class="nav-link">源内容</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto mt-24 space-y-8">
+        <section id="overview" class="glass-panel p-8 content-section">
+            <h1 class="text-3xl font-bold mb-4">Multi-Source Knowledge Audit</h1>
+            <p class="opacity-70 text-sm">审计时间: 2026-05-06 12:24:55 | 模式: MODERN</p>
+        </section>
+
+        <section id="conflicts" class="glass-panel p-8 content-section">
+            <h2 class="text-2xl font-bold mb-6">🔍 冲突审计报告</h2>
+            <div class="space-y-4">
+                <div class="p-4 bg-red-50/50 border border-red-100 rounded-lg text-red-700 text-sm">未检测到冲突</div>
+            </div>
+        </section>
+
+        <section id="raw" class="glass-panel p-8 content-section">
+            <h2 class="text-2xl font-bold mb-6">📄 源内容存档</h2>
+            <div class="space-y-6">
+                <div class="p-6 bg-white/30 rounded-xl border border-white/20"><h3 class="font-bold mb-2">来源 1</h3><pre class="text-xs font-mono">Title: None
+Author: 道长是名思维贩子
+Date: 2026-05-06
+
+=== CONTENT ===
+![cover_image](https://mmbiz.qpic.cn/mmbiz_jpg/Or4hr63QOcMY0BX3ZwVLXu3G9XMZNRxWnxzicmkQmKiaqFHVKV0JW0IkfxjG4lnFFvcQWbfUSv10MUUIWibkrAjTg/0?wx_fmt=jpeg)
+
+#  如何分析每一个复杂问题？一个框架搞定
+
+原创 道长是名思维贩子 道长是名思维贩子 [ 道长的思维铺子 ](<javascript:void\(0\);>)
+
+______
+
+在小说阅读器读本章
+
+去阅读
+
+在小说阅读器中沉浸阅读
+
+* * *
+
+### 《如何思考》系列第02篇·关于问题分析
+
+### 文中有问题分析模式，建议转发给AI，帮你分析各种问题
+
+###   
+
+
+### 01 一堆问题
+
+大家来看一堆问题：
+
+A、35岁，如何找到自己人生中最重要几件事？
+
+B、白手起家，如何在一年内赚到100万现金？
+
+C、末日来临社会秩序崩塌，如何带领全家生存下去？
+
+D、小学开始，要不要给孩子报各种补习班和兴趣班？
+
+E、如何在2-3周内快速掌握或上手一门技能？
+
+F、得了癌症，是痛苦治疗？还是赶紧周游世界？
+
+G、如何判断未来三年，中日会不会爆发战争?
+
+假设，你正在一个问答节目中，需要任选三题作答。
+
+作答标准是，只用三步去构建每一题的答题思路。
+
+全部答正确，你就可以领走50万奖励；但如果答错任何一步，什么也拿不走。
+
+那么如果是你，你会选择哪三个问题来回答？（大家可以把问题序号留言至评论区）
+
+这些问题，又该怎么分析和解题呢？
+
+  
+
+
+### 02解决问题vs分析问题
+
+这是我们「思考力训练营」群内的一次训练。
+
+思考本质上训练的，也是「分析问题」和「解决问题」的能力。
+
+当然「分析问题」和「解决问题」，也是两个不同维度的能力。
+
+  
+
+
+很多问题你能分析清楚看清楚，但不一定能解决。
+
+比如G题“判断中日会不会爆发战争?”你可以从各个维度去做分析，但这个问题不是你能解决的。
+
+还比如F题“一个人得了癌症”，可以从生理学、病理学等各个维度去分析了解整个病症机制，但对于癌症这个问题，可能没法解决。
+
+  
+
+
+而有些问题侧重直接解决，但不一定要分析很清楚。
+
+比如B题“用一年时间赚100w”，虽然你可以做全面的市场分析或商业分析；但更直接的方法，是直接开始直播带货、做AI App、学校门口摆摊...你可以用半年时间来测试哪种更适合你，哪种能形成稳定的现金流。
+
+能赚钱，不代表这个人能把自己赚钱的逻辑搞明白。
+
+「解决问题」和「分析问题」对问题的维度，一个横向，一个纵向。
+
+在丛林中，部落中的战斗者在丛林中摸索前行，和野兽搏斗...他们会形成直接「解决问题」的实用主义的方式。
+
+而部落中的瞭望者，也会爬到丛林高处，观察地图和识别丛林的方向...这是以「分析问题」为核心的思维方式。
+
+> 比如面对某种疾病，行动派主张大量试错，吃草药、扎针...；瞭望者会去研究人体和病症的核心机理。 
+> 
+> 还比如在硅谷，创业者负责在丛林探索试错；斯坦福的研究机构为创业者赋能。
+
+而更多人的问题是，只是在自己领域有多年摸爬滚打的经验，能解决自己领域的问题。
+
+但大家不擅长当瞭望者or分析师，不太懂分析问题，也不知道如何解决其他领域的问题。
+
+所以大家最好学习一下，分析师思考问题的方式。
+
+  
+
+
+### 03什么是问题
+
+分析师分析问题，第一步基本功，就是要理解，「到底什么是问题」？
+
+那到底什么是问题呢？
+
+在18年前，我还是实习分析师的时候，导师Eric就给我说过：“输入后无法获得预期输出。”这就是问题。
+
+比如「踩下刹车」-「汽车就能制动」，这是一组正常的符合预期的「输入-输出」。 但如果「踩下刹车」-「汽车不能制动」，这就很恐怖了。这也意味着汽车某个地方出问题了。
+
+还比如「努力工作」-「领导欣慰」，这是正常的「输入-输出」。 
+
+但是突然一天，「努力工作」-「领导很生气」；或者「这周不努力」-「领导很欣慰」。这都是出问题了，要么是自己哪里没做对，要么是领导精神出了问题。
+
+  
+
+
+所以大家「分析问题」，首先就需要大家看清楚，一件事的「输入」-「输出」是什么。 
+
+在上篇文章[《](<https://mp.weixin.qq.com/s?__biz=MzU3ODIyNjMwMw==&mid=2247487426&idx=1&sn=5ecc683b0fe83d88b34a4c30e644489c&scene=21#wechat_redirect>)[思考任何一件事的底层模式是什么？主要三步](<...</pre></div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        });
+        
+        // Simple Search
+        function searchContent() {
+            const q = document.getElementById('searchBar').value.toLowerCase();
+            document.querySelectorAll('.content-section').forEach(s => {
+                s.style.display = s.innerText.toLowerCase().includes(q) ? 'block' : 'none';
+            });
+        }
+
+        // Init theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</body>
+</html>

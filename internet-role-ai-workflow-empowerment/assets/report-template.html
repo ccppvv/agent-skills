@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ROLE_NAME}} AI工作流赋能报告</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 封面 -->
+        <header class="cover">
+            <div class="cover-content">
+                <h1 class="cover-title">{{ROLE_NAME}}</h1>
+                <h2 class="cover-subtitle">AI工作流赋能报告</h2>
+                <div class="cover-meta">
+                    <p>报告日期：{{REPORT_DATE}}</p>
+                    <p>分析师：AI Workflow Empowerment</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- 执行摘要 -->
+        <section class="executive-summary">
+            <h2 class="section-title">执行摘要</h2>
+            <div class="summary-cards">
+                <div class="card highlight">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-content">
+                        <h3>核心发现</h3>
+                        <p>{{CORE_FINDINGS}}</p>
+                    </div>
+                </div>
+                <div class="card success">
+                    <div class="card-icon">💰</div>
+                    <div class="card-content">
+                        <h3>预期收益</h3>
+                        <p>月度节省 <strong>{{HOURS_SAVED}}</strong> 小时</p>
+                        <p>ROI: <strong>{{ROI_PERCENTAGE}}%</strong></p>
+                    </div>
+                </div>
+                <div class="card info">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-content">
+                        <h3>推荐方案</h3>
+                        <p>{{RECOMMENDED_SOLUTION}}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 岗位现状分析 -->
+        <section class="analysis">
+            <h2 class="section-title">1. 岗位现状分析</h2>
+
+            <h3 class="subsection-title">工作流分解</h3>
+            <div class="workflow-breakdown">
+                <div class="workflow-layer">
+                    <div class="layer-header strategic">战略层 (5-10%)</div>
+                    <div class="layer-content">
+                        <ul>
+                            {{STRATEGIC_TASKS}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="workflow-layer">
+                    <div class="layer-header tactical">战术层 (15-20%)</div>
+                    <div class="layer-content">
+                        <ul>
+                            {{TACTICAL_TASKS}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="workflow-layer highlight-layer">
+                    <div class="layer-header execution">执行层 (40-50%) ← AI高潜力区</div>
+                    <div class="layer-content">
+                        <ul>
+                            {{EXECUTION_TASKS}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="workflow-layer highlight-layer">
+                    <div class="layer-header operational">事务层 (20-30%) ← AI高潜力区</div>
+                    <div class="layer-content">
+                        <ul>
+                            {{OPERATIONAL_TASKS}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">高频任务清单</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>任务</th>
+                        <th>频次</th>
+                        <th>典型耗时</th>
+                        <th>痛点</th>
+                        <th>AI适配度</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{TASK_TABLE_ROWS}}
+                    <!-- 示例行：
+                    <tr>
+                        <td>PRD文档撰写</td>
+                        <td>1-2次/周</td>
+                        <td>6-8h</td>
+                        <td>格式不统一、描述不够清晰</td>
+                        <td><span class="rating">⭐⭐⭐⭐⭐</span></td>
+                    </tr>
+                    -->
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">痛点优先级排序（RICE评分）</h3>
+            <div class="rice-chart">
+                {{RICE_CHART_DATA}}
+                <!-- 可以用简单的条形图或列表展示 -->
+            </div>
+        </section>
+
+        <!-- AI应用场景设计 -->
+        <section class="scenarios">
+            <h2 class="section-title">2. AI应用场景设计</h2>
+
+            <div class="scenario-list">
+                {{SCENARIO_BLOCKS}}
+                <!-- 每个场景的模板：
+                <div class="scenario-card">
+                    <div class="scenario-header">
+                        <span class="scenario-number">场景1</span>
+                        <h3>PRD文档生成</h3>
+                        <span class="efficiency-badge">提效 60-70%</span>
+                    </div>
+                    <div class="scenario-content">
+                        <div class="scenario-section">
+                            <h4>当前痛点</h4>
+                            <p>格式不统一、描述不够清晰、遗漏边界case</p>
+                        </div>
+                        <div class="scenario-section">
+                            <h4>AI解决方案</h4>
+                            <p>使用Claude基于需求要点生成结构化PRD</p>
+                        </div>
+                        <div class="scenario-section">
+                            <h4>工具推荐</h4>
+                            <div class="tool-tag">Claude (Opus/Sonnet)</div>
+                        </div>
+                        <div class="scenario-section">
+                            <h4>Prompt模板</h4>
+                            <pre class="code-block">你是一位资深产品经理。请基于以下需求信息，生成一份结构化的PRD文档...</pre>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+        </section>
+
+        <!-- 工具选型与成本 -->
+        <section class="tools">
+            <h2 class="section-title">3. 工具选型与成本</h2>
+
+            <h3 class="subsection-title">推荐工具组合</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>工具名称</th>
+                        <th>用途</th>
+                        <th>月度成本</th>
+                        <th>优先级</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{TOOL_TABLE_ROWS}}
+                    <!-- 示例行：
+                    <tr>
+                        <td><strong>Claude Pro</strong></td>
+                        <td>PRD生成、用户访谈整理、竞品分析</td>
+                        <td>$20</td>
+                        <td><span class="priority-high">P0</span></td>
+                    </tr>
+                    -->
+                </tbody>
+            </table>
+
+            <div class="cost-summary">
+                <div class="cost-card">
+                    <h4>总成本预算</h4>
+                    <p class="cost-amount">{{TOTAL_COST}}/月</p>
+                </div>
+                <div class="cost-card">
+                    <h4>年度成本</h4>
+                    <p class="cost-amount">{{ANNUAL_COST}}/年</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI评估 -->
+        <section class="roi">
+            <h2 class="section-title">4. ROI评估</h2>
+
+            <div class="roi-calculation">
+                <h3 class="subsection-title">量化收益</h3>
+                <div class="calculation-box">
+                    <div class="calc-row">
+                        <span class="calc-label">月度节省时间：</span>
+                        <span class="calc-value">{{HOURS_SAVED}} 小时</span>
+                    </div>
+                    <div class="calc-row">
+                        <span class="calc-label">假设时薪：</span>
+                        <span class="calc-value">{{HOURLY_RATE}}</span>
+                    </div>
+                    <div class="calc-row">
+                        <span class="calc-label">月度节省成本：</span>
+                        <span class="calc-value highlight">{{COST_SAVED}}</span>
+                    </div>
+                    <div class="calc-row">
+                        <span class="calc-label">AI工具成本：</span>
+                        <span class="calc-value">{{TOOL_COST}}</span>
+                    </div>
+                    <div class="calc-row total">
+                        <span class="calc-label">净收益：</span>
+                        <span class="calc-value">{{NET_BENEFIT}}</span>
+                    </div>
+                    <div class="calc-row total">
+                        <span class="calc-label">ROI：</span>
+                        <span class="calc-value success">{{ROI_PERCENTAGE}}%</span>
+                    </div>
+                    <div class="calc-row">
+                        <span class="calc-label">盈亏平衡点：</span>
+                        <span class="calc-value">{{BREAKEVEN_MONTHS}} 个月</span>
+                    </div>
+                </div>
+
+                <h3 class="subsection-title">定性收益</h3>
+                <ul class="benefit-list">
+                    {{QUALITATIVE_BENEFITS}}
+                    <!-- 示例：
+                    <li>✅ 文档质量提升，格式统一规范</li>
+                    <li>✅ 员工满意度提升，减少重复劳动</li>
+                    <li>✅ 响应速度加快，决策效率提高</li>
+                    -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- 实施路径 -->
+        <section class="roadmap">
+            <h2 class="section-title">5. 实施路径</h2>
+
+            <div class="timeline">
+                <div class="phase">
+                    <div class="phase-header phase-0">
+                        <h3>Phase 0: 准备阶段</h3>
+                        <span class="phase-duration">1-2周</span>
+                    </div>
+                    <div class="phase-content">
+                        <h4>目标</h4>
+                        <p>建立基础认知和试点选择</p>
+                        <h4>关键活动</h4>
+                        <ul>
+                            {{PHASE_0_ACTIVITIES}}
+                        </ul>
+                        <h4>交付物</h4>
+                        <ul>
+                            {{PHASE_0_DELIVERABLES}}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-header phase-1">
+                        <h3>Phase 1: 试点验证</h3>
+                        <span class="phase-duration">2-4周</span>
+                    </div>
+                    <div class="phase-content">
+                        <h4>目标</h4>
+                        <p>小范围验证AI工作流可行性</p>
+                        <h4>关键活动</h4>
+                        <ul>
+                            {{PHASE_1_ACTIVITIES}}
+                        </ul>
+                        <h4>交付物</h4>
+                        <ul>
+                            {{PHASE_1_DELIVERABLES}}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-header phase-2">
+                        <h3>Phase 2: 规模推广</h3>
+                        <span class="phase-duration">1-2个月</span>
+                    </div>
+                    <div class="phase-content">
+                        <h4>目标</h4>
+                        <p>在团队/部门范围推广验证过的工作流</p>
+                        <h4>关键活动</h4>
+                        <ul>
+                            {{PHASE_2_ACTIVITIES}}
+                        </ul>
+                        <h4>交付物</h4>
+                        <ul>
+                            {{PHASE_2_DELIVERABLES}}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-header phase-3">
+                        <h3>Phase 3: 优化迭代</h3>
+                        <span class="phase-duration">持续</span>
+                    </div>
+                    <div class="phase-content">
+                        <h4>目标</h4>
+                        <p>基于使用数据持续优化</p>
+                        <h4>关键活动</h4>
+                        <ul>
+                            {{PHASE_3_ACTIVITIES}}
+                        </ul>
+                        <h4>交付物</h4>
+                        <ul>
+                            {{PHASE_3_DELIVERABLES}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">风险管理</h3>
+            <table class="data-table risk-table">
+                <thead>
+                    <tr>
+                        <th>风险</th>
+                        <th>影响</th>
+                        <th>应对策略</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{RISK_TABLE_ROWS}}
+                    <!-- 示例行：
+                    <tr>
+                        <td>员工抵触</td>
+                        <td>采纳率低</td>
+                        <td>强调"增强而非替代"，展示快赢案例</td>
+                    </tr>
+                    -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 附录 -->
+        <section class="appendix">
+            <h2 class="section-title">6. 附录</h2>
+
+            <h3 class="subsection-title">Prompt模板库</h3>
+            <div class="prompt-templates">
+                {{PROMPT_TEMPLATES}}
+                <!-- 每个模板的格式：
+                <div class="prompt-card">
+                    <h4>PRD文档生成</h4>
+                    <pre class="code-block">你是一位资深产品经理。请基于以下需求信息，生成一份结构化的PRD文档...
+
+## 需求背景
+[描述业务背景和用户痛点]
+
+## 目标用户
+[描述目标用户画像]
+...</pre>
+                    <button class="copy-btn" onclick="copyPrompt(this)">复制Prompt</button>
+                </div>
+                -->
+            </div>
+
+            <h3 class="subsection-title">工具使用指南</h3>
+            <div class="tool-guides">
+                {{TOOL_GUIDES}}
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="report-footer">
+            <p>本报告由 <strong>Internet Role AI Workflow Empowerment</strong> 技能生成</p>
+            <p>报告日期：{{REPORT_DATE}} | 版本：v1.0</p>
+        </footer>
+    </div>
+
+    <script>
+        // 复制Prompt功能
+        function copyPrompt(button) {
+            const promptCard = button.closest('.prompt-card');
+            const codeBlock = promptCard.querySelector('.code-block');
+            const text = codeBlock.textContent;
+
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = '已复制！';
+                setTimeout(() => {
+                    button.textContent = '复制Prompt';
+                }, 2000);
+            });
+        }
+
+        // 打印功能
+        function printReport() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
